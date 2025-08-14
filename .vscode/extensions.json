@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "stylelint.vscode-stylelint",
+    "esbenp.prettier-vscode",
+    "vunguyentuan.vscode-css-variables",
+    "jacobcassidy.css-nesting-syntax-highlighting",
+    "kamatte-me.css-custom-media",
+    "lokalise.i18n-ally"
+  ],
+  "unwantedRecommendations": [
+    "csstools.postcss" // Emmet doesn't work properly with this one
+  ]
+}
