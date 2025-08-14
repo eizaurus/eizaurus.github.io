@@ -20,21 +20,8 @@ export default function Block({ id,text, indicator,indicatorStatus,img, variant,
   const textRef = useRef<HTMLParagraphElement>(null);
   const padding=16;
   const [indicatorOffset, setIndicatorOffset] = useState(0);
+  const [needPadding,setNeedPadding]=useState(false);
 
-/* useEffect(() => {
-  if (!textRef.current || !blockRef.current) return;
-
-  const textEl = textRef.current;
-  const lineHeight = parseFloat(getComputedStyle(textEl).lineHeight || '0');
-  const rects = textEl.getClientRects();
-  const lastRect = rects[rects.length - 1];
-
-  if (lastRect) {
-    const blockRect = blockRef.current.getBoundingClientRect();
-    const overlap = lastRect.right + 50 > blockRect.right; // 50px — ширина индикатора
-    setIndicatorOffset(overlap ? lineHeight : 12);
-  }
-}, [text, indicator]); */
 useEffect(() => {
   if (!textRef.current || !blockRef.current) return;
 
@@ -62,8 +49,10 @@ useEffect(() => {
     }
   if (spaceToRight < indicatorWidth+14) {
     setIndicatorOffset(lineHeight); 
+    setNeedPadding(true);
   } else {
     setIndicatorOffset(12); // обычный отступ
+    setNeedPadding(true);
   }
 }, [text, indicator]);
 
@@ -84,7 +73,7 @@ useEffect(() => {
   {variant === 'imageLeft'&& (
     <img src={img} alt="placeholder" className="image" />
   )}
-  <p ref={textRef} className="text" style={{ paddingBlock: v.includes(variant)? padding:0}}>
+  <p ref={textRef} className="text" style={{ paddingTop: v.includes(variant)? padding:0, paddingBottom: v.includes(variant)||needPadding? padding:0}}>
     {text}
   </p>
   </div>

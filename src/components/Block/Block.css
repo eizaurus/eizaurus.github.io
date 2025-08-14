@@ -39,13 +39,7 @@
   border-radius: 0 0 25px 25px;
 }
 
-.block.image-top .indicator {
-  bottom: 8px; /* чуть ближе к низу картинки */
-}
 
-.block.image-bottom .indicator {
-   bottom: 12px; /* если понадобится для обратного варианта */
-}
 .content{
   padding-inline: 16px;
   display: flex;
