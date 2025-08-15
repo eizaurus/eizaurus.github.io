@@ -31,10 +31,10 @@ export default function Block2({
   useLayoutEffect(() => {
     const measure = () => {
       if (!inlineRef.current || !textRef.current || !blockRef.current) return;
-      //const textEl = textRef.current;
+      const textEl = textRef.current;
       const blockEl = blockRef.current;
-      //const style = getComputedStyle(textEl);
-      //const lineHeight = parseFloat(style.lineHeight || '0') || textEl.clientHeight;
+      const style = getComputedStyle(textEl);
+      const lineHeight = parseFloat(style.lineHeight || '0') || textEl.clientHeight;
       const range = document.createRange();
       range.selectNodeContents(inlineRef.current);
       const rects = Array.from(range.getClientRects());
@@ -57,12 +57,13 @@ export default function Block2({
 
         let shouldShiftText = false;
         if (variant === 'imageLeft') {
-          shouldShiftText = lines >= 3 && overlaps;
+          shouldShiftText = lines >= 2 && overlaps;
         } else {
           shouldShiftText = variant !== 'imageBottom' && overlaps;
         }
-
-        setExtraPaddingTop(shouldShiftText ? 16 : 0);
+        const paddingIndicator=(variant === 'imageLeft'&&lines <3)?16:lineHeight; 
+       console.log(variant,linesCount,paddingIndicator) 
+        setExtraPaddingTop(shouldShiftText ?paddingIndicator : 0);
         setIndicatorJumped(shouldShiftText);
       }
     };
