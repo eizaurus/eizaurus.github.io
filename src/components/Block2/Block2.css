@@ -53,10 +53,10 @@ margin-block: 16px;
   flex: 1;
   word-break: break-word;
 }
-.indicator {
+.indicator2 {
   position: absolute;
-  right: 14px;
-  bottom: 19px;
+  right: 12px;
+  bottom: 8px;
   border-radius: 30px;
   padding: 2px 9px;
   font-size: 12px;
@@ -67,20 +67,20 @@ margin-block: 16px;
   justify-content: center;
   transition: transform 0.15s ease, bottom 0.15s ease;
 }
-.indicator.blur{
+.indicator2.blur{
  background: rgba(0, 0, 0, 0.3); /* лёгкое затемнение */
   backdrop-filter: blur(6px); /* размытие фона под слоем */
   -webkit-backdrop-filter: blur(6px); /* для Safari */
 border: none;
 
 }
-.indicator.active {
+.indicator2.active {
   background: linear-gradient(239.93deg, #3FCCFF -26.89%, #068DFB 70.78%);
   box-shadow: 0px 1px 5.3px 0px #149DFF36;
   color: white;
 }
 
-.indicator.inactive {
+.indicator2.inactive {
   border: 0.5px solid #B4B4B4;
   color: #B4B4B4;
 }
